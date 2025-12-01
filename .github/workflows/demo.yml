@@ -1,17 +1,24 @@
 name: Doppler CI Test
 
-on: [push]
+on:
+  push:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Pull Doppler Secrets
         uses: dopplerhq/cli-action@v1
         with:
           doppler-token: ${{ secrets.DOPPLER_TOKEN }}
 
-      - name: Print secret (test only)
-        run: echo "API_KEY is: $TEST_API_KEY"
+      - name: Test secret presence
+        run: |
+          if [ -z "$TEST_API_KEY" ]; then
+            echo "SECRET MISSING" && exit 1
+          else
+            echo "SECRET PRESENT"
+          fi
