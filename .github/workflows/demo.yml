@@ -1,4 +1,4 @@
-name: Doppler CI Test
+name: Doppler CI Test 1
 
 on:
   push:
