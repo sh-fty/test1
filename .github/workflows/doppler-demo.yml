@@ -1,0 +1,19 @@
+name: Doppler CI Test
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Pull Doppler Secrets
+        uses: dopplerhq/cli-action@v1
+        with:
+          doppler-token: ${{ secrets.DOPPLER_TOKEN }}
+          # optionally: project: doppler-demo
+          # optionally: config: dev
+
+      - name: Print secret (test only)
+        run: echo "API_KEY is: $API_KEY"
