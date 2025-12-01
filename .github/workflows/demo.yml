@@ -13,18 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       
-      - name: Display Secret Names (Secure)
-        run: |
-          echo "=== Doppler Secrets Available in GitHub Actions ==="
-          echo "This workflow has access to the following secrets:"
-          echo ""
-          echo "✓ API_KEY (synced from Doppler)"
-          echo "✓ DATABASE_URL (synced from Doppler)"
-          echo "✓ STRIPE_KEY (synced from Doppler)"
-          echo ""
-          echo "Note: Secret values are hidden by GitHub for security"
-          echo "=================================================="
-      
       - name: Verify Secret is Available
         run: |
           echo "Checking if API_KEY secret exists..."
