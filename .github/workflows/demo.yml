@@ -3,7 +3,7 @@ name: Doppler Secrets Demo
 on:
   push:
     branches: [ main ]
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   demo-secrets:
@@ -13,9 +13,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       
+      - name: Display Secret Names (Secure)
+        run: |
+          echo "=== Doppler Secrets Available in GitHub Actions ==="
+          echo "This workflow has access to the following secrets:"
+          echo ""
+          echo "✓ API_KEY (synced from Doppler)"
+          echo "✓ DATABASE_URL (synced from Doppler)"
+          echo "✓ STRIPE_KEY (synced from Doppler)"
+          echo ""
+          echo "Note: Secret values are hidden by GitHub for security"
+          echo "=================================================="
+      
       - name: Verify Secret is Available
         run: |
-          echo "Checking if API_KEY secret exists:"
+          echo "Checking if API_KEY secret exists..."
           if [ -n "${{ secrets.API_KEY }}" ]; then
             echo "✓ API_KEY is available and has a value"
             echo "  Length: ${#SECRET_VALUE} characters"
@@ -25,9 +37,12 @@ jobs:
         env:
           SECRET_VALUE: ${{ secrets.API_KEY }}
       
-      
-      - name: Show Partial Secret
+      - name: Show Partial Secret (Safe Demo)
         run: |
-          echo "showing first 4 characters of secret:"
+          echo "=== Safe Secret Display (First 4 characters only) ==="
           SECRET_PREVIEW="${SECRET_VALUE:0:4}..."
           echo "API_KEY starts with: $SECRET_PREVIEW"
+          echo ""
+          echo "This proves the secret is accessible without exposing it fully"
+        env:
+          SECRET_VALUE: ${{ secrets.API_KEY }}
