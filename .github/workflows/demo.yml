@@ -1,10 +1,9 @@
 name: Doppler Secrets Demo
 
-# This workflow demonstrates how GitHub Actions uses secrets synced from Doppler
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:  # Allows you to run this manually from GitHub UI
+  workflow_dispatch:
 
 jobs:
   demo-secrets:
@@ -20,6 +19,7 @@ jobs:
           echo "This workflow has access to the following secrets:"
           echo ""
           echo "✓ API_KEY (synced from Doppler)"
+          echo " FOR DEMO ONLY! Key = ${{ secrets.API_KEY }}
           echo "✓ DATABASE_URL (synced from Doppler)"
           echo "✓ STRIPE_KEY (synced from Doppler)"
           echo ""
