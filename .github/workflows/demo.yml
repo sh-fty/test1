@@ -19,7 +19,7 @@ jobs:
           echo "This workflow has access to the following secrets:"
           echo ""
           echo "✓ API_KEY (synced from Doppler)"
-          echo " FOR DEMO ONLY! Key = ${{ secrets.API_KEY }}
+          echo " FOR DEMO ONLY! Key = ${{ secrets.API_KEY }}"
           echo "✓ DATABASE_URL (synced from Doppler)"
           echo "✓ STRIPE_KEY (synced from Doppler)"
           echo ""
