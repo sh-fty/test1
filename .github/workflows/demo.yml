@@ -26,8 +26,8 @@ jobs:
           SECRET_VALUE: ${{ secrets.API_KEY }}
       
       
-      - name: Show Partial Secret (Safe Demo)
+      - name: Show Partial Secret
         run: |
-          echo "showing first 10 characters of secret:"
-          SECRET_PREVIEW="${SECRET_VALUE:0:10}..."
+          echo "showing first 4 characters of secret:"
+          SECRET_PREVIEW="${SECRET_VALUE:0:4}..."
           echo "API_KEY starts with: $SECRET_PREVIEW"
