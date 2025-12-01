@@ -30,7 +30,5 @@ jobs:
           echo "=== Safe Secret Display (First 4 characters only) ==="
           SECRET_PREVIEW="${SECRET_VALUE:0:4}..."
           echo "API_KEY starts with: $SECRET_PREVIEW"
-          echo ""
-          echo "This proves the secret is accessible without exposing it fully"
         env:
           SECRET_VALUE: ${{ secrets.API_KEY }}
