@@ -19,6 +19,6 @@ jobs:
         run: |
           if [ -z "$TEST_API_KEY" ]; then
             echo "SECRET MISSING" && exit 1
-          else
+          else 
             echo "SECRET PRESENT"
           fi
